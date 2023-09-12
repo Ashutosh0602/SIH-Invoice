@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:invoice_app_sih/routes/route_const.dart';
 import 'package:invoice_app_sih/routes/routes.dart';
 import 'package:invoice_app_sih/controllers/controller.dart';
 
@@ -26,7 +27,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(controller.productsList);
     return WillPopScope(
       onWillPop: () async {
         return await Get.dialog(
@@ -466,7 +466,10 @@ class HomePage extends StatelessWidget {
                     ),
                     const Spacer(flex: 4),
                     darkMode(),
-                    const Spacer(),
+                    drawerItems(Icons.login, "Logout", controller.logout),
+                    const Spacer(
+                      flex: 1,
+                    )
                   ],
                 )
               : SingleChildScrollView(
@@ -511,9 +514,16 @@ class HomePage extends StatelessWidget {
                         onTap: () {
                           Get.toNamed(Routes.addCompanyScreen);
                         },
-                        child: drawerItems(Icons.edit, "Edit Company Details"),
+                        child: drawerItems(
+                            Icons.edit, "Edit Company Details", null),
                       ),
                       darkMode(),
+                      drawerItems(Icons.login, "Logout", () {
+                        controller.logout;
+                      }),
+                      const Spacer(
+                        flex: 1,
+                      )
                     ],
                   ),
                 ),
@@ -562,8 +572,9 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  drawerItems(icon, name) {
+  drawerItems(IconData icon, String name, void Function()? onTap) {
     return ListTile(
+      onTap: onTap,
       title: Text(
         name,
         style: TextStyle(

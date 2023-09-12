@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "900591611230",
+    "project_id": "project-sih-f08c3",
+    "storage_bucket": "project-sih-f08c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900591611230:android:6f4ea402863abf5bba33cf",
+        "android_client_info": {
+          "package_name": "com.example.invoice_app_sih"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC52KTVKZO5LrQEOoY-bHQa55WX-sVyiMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

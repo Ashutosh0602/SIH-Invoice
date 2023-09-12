@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:invoice_app_sih/controllers/auth_controller.dart';
 import 'package:invoice_app_sih/models/models.dart';
 import 'package:pdf/pdf.dart';
 
 Controller controller = Get.put(Controller());
 
 class Controller extends GetxController {
+  final AuthController _authController = Get.find();
+
   var pagesViewScaffoldKey = GlobalKey<ScaffoldState>();
 
   void openDrawer() {
@@ -62,5 +65,10 @@ class Controller extends GetxController {
     if (pickedImage != null) {
       selectedImagePath.value = pickedImage.path;
     }
+  }
+
+  //auth functionality
+  void logout() {
+    _authController.signOut();
   }
 }
