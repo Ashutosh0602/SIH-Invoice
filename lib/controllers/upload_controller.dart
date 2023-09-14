@@ -16,13 +16,13 @@ class UploadController extends GetxController {
     // Generate a v1 (time-based) id
     String id = uuid.v1();
 
-    final photoRef = storage.ref('photos').child(uid).child(id);
+    final photoRef = storage.ref('pdf-invoice').child(uid).child(id);
 
     final UploadTask uploadTask = photoRef.putFile(
       file,
       SettableMetadata(
-        contentType: 'image/jpeg', // Adjust content type if necessary
-        customMetadata: <String, String>{'photoId': id},
+        contentType: 'application/pdf', // Adjust content type if necessary
+        customMetadata: <String, String>{'pdfId': id},
       ),
     );
 
@@ -30,10 +30,16 @@ class UploadController extends GetxController {
     return taskSnap;
   }
 
-  Future<void> deleteFile(
-      {required String uid, required String photoId}) async {
-    final photoRef = storage.ref('photos').child(uid).child(photoId);
+  Future<void> deleteFile({required String uid, required String pdfId}) async {
+    final photoRef = storage.ref('pdf-invoice').child(uid).child(pdfId);
 
     await photoRef.delete();
+  }
+
+  Future<List<Reference>> getAllPdfReferences(String uid) async {
+    final ListResult result =
+        await storage.ref('pdf-invoice').child(uid).listAll();
+
+    return result.items;
   }
 }

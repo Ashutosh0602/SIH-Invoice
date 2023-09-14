@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:invoice_app_sih/controllers/controller.dart';
+import 'package:invoice_app_sih/controllers/home_controller.dart';
 import 'package:invoice_app_sih/routes/route_const.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
@@ -266,6 +266,7 @@ pdfDialogBox(e) {
       ),
       content: Column(
         children: [
+          //save pdf button
           const SizedBox(height: 10),
           ElevatedButton.icon(
             onPressed: () async {
@@ -289,6 +290,31 @@ pdfDialogBox(e) {
             },
             label: const Text("Save Invoice PDF"),
             icon: const Icon(Icons.save_alt),
+            style: elevatedButtonStyle(),
+          ),
+          const SizedBox(height: 10),
+          //save pdf to cloud button
+          ElevatedButton.icon(
+            onPressed: () async {
+              Directory? dir = await getApplicationCacheDirectory();
+              File file = File("${dir.path}/${e.customerName}$dateToday.pdf");
+              await file.writeAsBytes(await pdf.save());
+              await controller.uploadFileToCloud(file);
+              Get.snackbar(
+                "PDF Save Successfully to Cloud...",
+                "Tap To Open PDF",
+                backgroundColor: controller.themeColor.value.withOpacity(0.7),
+                snackPosition: SnackPosition.BOTTOM,
+                icon: const Icon(Icons.download_done_outlined),
+                barBlur: 70,
+                margin: const EdgeInsets.all(15),
+                onTap: (val) async {
+                  await OpenFile.open(file.path);
+                },
+              );
+            },
+            label: const Text("Save Invoice PDF to cloud"),
+            icon: const Icon(Icons.cloud),
             style: elevatedButtonStyle(),
           ),
           const SizedBox(height: 20),

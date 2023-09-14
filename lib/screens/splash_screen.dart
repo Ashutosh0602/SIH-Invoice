@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:invoice_app_sih/routes/route_const.dart';
-import 'package:invoice_app_sih/routes/routes.dart';
-import 'package:invoice_app_sih/controllers/controller.dart';
+import 'package:invoice_app_sih/controllers/home_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,9 +12,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
-    Future.delayed(
-        const Duration(seconds: 3), () => Get.offNamed(Routes.loginScreen));
+    // super.initState();
+    // Future.delayed(
+    //     const Duration(seconds: 3), () => Get.offNamed(Routes.loginScreen));
   }
 
   @override

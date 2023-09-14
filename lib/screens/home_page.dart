@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:invoice_app_sih/routes/route_const.dart';
-import 'package:invoice_app_sih/routes/routes.dart';
-import 'package:invoice_app_sih/controllers/controller.dart';
+import 'package:invoice_app_sih/controllers/home_controller.dart';
 
 import '../models/models.dart';
 import '../styles/styles.dart';
@@ -137,6 +136,10 @@ class HomePage extends StatelessWidget {
                 child: const Text(
                   "Create\nInvoice",
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
                 ),
               ),
             )
@@ -467,6 +470,8 @@ class HomePage extends StatelessWidget {
                     const Spacer(flex: 4),
                     darkMode(),
                     drawerItems(Icons.login, "Logout", controller.logout),
+                    drawerItems(Icons.picture_as_pdf, "Show Invoices",
+                        controller.openInvoiceScreen),
                     const Spacer(
                       flex: 1,
                     )
@@ -521,9 +526,8 @@ class HomePage extends StatelessWidget {
                       drawerItems(Icons.login, "Logout", () {
                         controller.logout;
                       }),
-                      const Spacer(
-                        flex: 1,
-                      )
+                      drawerItems(Icons.picture_as_pdf, "Show Invoices",
+                          controller.openInvoiceScreen),
                     ],
                   ),
                 ),

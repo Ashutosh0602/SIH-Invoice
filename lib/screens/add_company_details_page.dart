@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:invoice_app_sih/controllers/controller.dart';
+import 'package:invoice_app_sih/controllers/home_controller.dart';
 import '../styles/styles.dart';
 
 class AddCompanyDetails extends StatelessWidget {
@@ -39,7 +39,7 @@ class AddCompanyDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        title: Obx(() => Text("Company Details", style: appBarText())),
+        title: Text("Company Details", style: appBarText()),
         centerTitle: true,
         actions: [
           TextButton(

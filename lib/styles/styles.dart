@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../controllers/controller.dart';
+import '../controllers/home_controller.dart';
 
 appBarText() {
-  return TextStyle(
-      color: (controller.isDarkTheme.value) ? Colors.black : Colors.white);
+  return const TextStyle(fontSize: 20);
 }
 
-textButtonStyle() {
+ButtonStyle textButtonStyle() {
   return TextButton.styleFrom(
+    backgroundColor: Colors.transparent,
     primary: (controller.isDarkTheme.value) ? Colors.black : Colors.white,
     shape: const StadiumBorder(),
     elevation: 0,

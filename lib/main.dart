@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialBinding: AuthBinding(),
+      initialBinding: ServiesBinding(),
       defaultTransition: Transition.fadeIn,
       theme: Themes().lightTheme,
       darkTheme: Themes().darkTheme,

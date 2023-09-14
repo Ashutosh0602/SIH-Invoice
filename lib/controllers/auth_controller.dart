@@ -38,6 +38,7 @@ class AuthController extends GetxController {
 
   @override
   void onReady() async {
+    await Future.delayed(const Duration(seconds: 3));
     ever(firebaseUser, handleAuthChanged);
     firebaseUser.bindStream(user);
     super.onReady();
@@ -45,7 +46,9 @@ class AuthController extends GetxController {
 
   handleAuthChanged(_firebaseUser) async {
     if (_firebaseUser != null) {
-      Get.offNamed(Routes.homeScreen);
+      Get.offAllNamed(Routes.homeScreen);
+    } else {
+      Get.offAllNamed(Routes.loginScreen);
     }
   }
 
@@ -282,7 +285,6 @@ class AuthController extends GetxController {
   void signOut() async {
     print('here');
     await _authService.signOutUser();
-    Get.offAllNamed(Routes.loginScreen);
     // Get.reset();
     update();
   }

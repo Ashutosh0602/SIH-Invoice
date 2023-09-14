@@ -6,4 +6,6 @@ class Routes {
   static String loginScreen = "/loginScreen";
   static String signupScreen = "/signupScreen";
   static String forgetScreen = "/foregetScreen";
+
+  static var showInvoiceScreen = "/showInvoiceScreen";
 }
