@@ -11,12 +11,26 @@ class UploadController extends GetxController {
     return '${snapshot.bytesTransferred}/${snapshot.totalBytes}';
   }
 
+  String getFileName(File file) {
+    // Get the full file path
+    String filePath = file.path;
+
+    // Use the 'split' method to split the path into parts using the platform-specific separator
+    List<String> pathParts = filePath.split(Platform.pathSeparator);
+
+    // The last part of the path is the file name
+    String fileName = pathParts.last;
+
+    return fileName;
+  }
+
   Future<TaskSnapshot> uploadFile(
       {required File file, required String uid}) async {
     // Generate a v1 (time-based) id
     String id = uuid.v1();
 
-    final photoRef = storage.ref('pdf-invoice').child(uid).child(id);
+    final photoRef =
+        storage.ref('pdf-invoice').child(uid).child(getFileName(file));
 
     final UploadTask uploadTask = photoRef.putFile(
       file,

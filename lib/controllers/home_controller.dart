@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:invoice_app_sih/controllers/auth_controller.dart';
@@ -76,8 +77,10 @@ class HomeController extends GetxController {
 
   //service functionality
   Future<void> uploadFileToCloud(File file) async {
+    EasyLoading.show(status: 'uploading...');
     await _uploadController.uploadFile(
         file: file, uid: _authController.getUser.uid);
+    EasyLoading.dismiss();
   }
 
   void openInvoiceScreen() {

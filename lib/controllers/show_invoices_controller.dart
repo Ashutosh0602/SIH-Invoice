@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:invoice_app_sih/controllers/auth_controller.dart';
 import 'package:invoice_app_sih/controllers/theme_controller.dart';
@@ -18,11 +19,32 @@ class ShowInvoicesController extends GetxController {
 
   RxBool get isDarkTheme => _themeController.isDarkTheme;
   //pdf-invoices
-  final isLoading = true.obs;
-  final pdfReferences = <Reference>[].obs;
+  final isLoading = false.obs;
+  RxList<Reference> pdfReferences = <Reference>[].obs;
 
-  Future<List<Reference>> getAllPdfReferences() {
-    return _uploadController.getAllPdfReferences(_authController.getUser.uid);
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchPdfReferences();
+  }
+
+  // Fetch PDF references and populate pdfReferences
+  Future<void> fetchPdfReferences() async {
+    try {
+      isLoading.value = true; // Set isLoading to true when fetching
+      final references = await _uploadController
+          .getAllPdfReferences(_authController.getUser.uid);
+      pdfReferences.assignAll(references);
+    } catch (e) {
+      print('Error fetching PDF references: $e');
+    } finally {
+      isLoading.value = false; // Set isLoading to false when done fetching
+    }
   }
 
   Future<File> getTempFile(String fileName) async {
@@ -32,9 +54,34 @@ class ShowInvoicesController extends GetxController {
   }
 
   Future<Uint8List?> downloadFileFromStorage(Reference reference) async {
+    EasyLoading.show(status: 'downloading...');
     final storage = FirebaseStorage.instance;
     final file = await storage.ref(reference.fullPath).getData();
+    EasyLoading.dismiss();
     return file;
+  }
+
+  Future<void> deleteFileFromStorage(Reference reference) async {
+    try {
+      EasyLoading.show(status: "Deleteing file...");
+      final storage = FirebaseStorage.instance;
+      await storage.ref(reference.fullPath).delete();
+      EasyLoading.dismiss();
+      Get.snackbar("Delete file from Cloud", "Successful",
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 3),
+          backgroundColor: Colors.lightGreen,
+          colorText: Colors.white);
+      // pdfReferences.remove(reference);
+      fetchPdfReferences();
+      // update();
+    } catch (e) {
+      Get.snackbar("Delete file from Cloud", "Error",
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 5),
+          backgroundColor: Colors.redAccent,
+          colorText: Colors.white);
+    }
   }
 
   Future<void> openPdfFile(Reference reference) async {

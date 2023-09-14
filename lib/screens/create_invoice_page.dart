@@ -296,6 +296,7 @@ pdfDialogBox(e) {
           //save pdf to cloud button
           ElevatedButton.icon(
             onPressed: () async {
+              Get.back();
               Directory? dir = await getApplicationCacheDirectory();
               File file = File("${dir.path}/${e.customerName}$dateToday.pdf");
               await file.writeAsBytes(await pdf.save());
