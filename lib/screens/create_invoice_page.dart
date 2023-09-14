@@ -31,7 +31,7 @@ class CreateInvoice extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Obx(() => Text("Select Products", style: appBarText())),
+        title: Text("Select Products", style: appBarText()),
         centerTitle: true,
         backgroundColor: controller.themeColor.value,
         leading: IconButton(
@@ -362,9 +362,9 @@ pdfDialogBox(e) {
           const SizedBox(height: 20),
           TextButton.icon(
             onPressed: () async {
-              Get.offNamedUntil(Routes.homeScreen, (route) => false);
+              Get.back();
             },
-            label: const Text("Home Page"),
+            label: const Text("back"),
             icon: const Icon(Icons.home),
             style: TextButton.styleFrom(
               primary: controller.themeColor.value,

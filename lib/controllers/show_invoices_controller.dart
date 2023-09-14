@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +31,14 @@ class ShowInvoicesController extends GetxController {
     return File(filePath);
   }
 
-  Future<void> openPdfFile(Reference reference) async {
+  Future<Uint8List?> downloadFileFromStorage(Reference reference) async {
     final storage = FirebaseStorage.instance;
     final file = await storage.ref(reference.fullPath).getData();
+    return file;
+  }
 
+  Future<void> openPdfFile(Reference reference) async {
+    var file = await downloadFileFromStorage(reference);
     if (file != null) {
       // File opened successfully
       final tempFilePath = await getTempFile(reference.name);

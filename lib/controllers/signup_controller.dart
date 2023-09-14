@@ -57,8 +57,8 @@ class SignUpFormController extends GetxController {
     if (val.isEmpty) {
       return "Phone is required";
     }
-    if (val.length < 11) {
-      return "Must be at least 11 characters in length";
+    if (val.length < 10) {
+      return "Must be at least 10 digits in length";
     }
     return null;
   }
