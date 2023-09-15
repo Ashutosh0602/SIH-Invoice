@@ -2,7 +2,7 @@
 
 This project is a cross-platform deep linking Android tablet app developed with Flutter for the "Govt. Billing and Invoicing system". The project repository can be found [here](https://github.com/seetadev/GovtInvoice).
 
-## Demo Link: https://www.kapwing.com/65038503994eb600174483f5/studio/editor/sharing
+## Video Demo Link: https://www.kapwing.com/65038503994eb600174483f5/studio/editor/sharing
 
 ## Features
 
@@ -30,6 +30,8 @@ This project is a cross-platform deep linking Android tablet app developed with 
 ## Overview
 
 Pragati is an indigenous real-time street parking and traffic management system. Our solution utilizes state-of-the-art technologies such as machine learning, computer vision, and energy-efficient sensors to provide real-time traffic analysis and vital insights on available parking spaces. 
+
+## SIH Presentation: https://www.figma.com/proto/ij7gryKbJWIWUhDt9ZDe9C/SIH-PPT?type=design&node-id=1-2&t=jr8khi3pu7HBCdHo-1&scaling=contain&page-id=0%3A1&mode=design
 
 ## Problem Statement
 
