@@ -2,6 +2,8 @@
 
 This project is a cross-platform deep linking Android tablet app developed with Flutter for the "Govt. Billing and Invoicing system". The project repository can be found [here](https://github.com/seetadev/GovtInvoice).
 
+## Demo Link: https://www.kapwing.com/65038503994eb600174483f5/studio/editor/sharing
+
 ## Features
 
 1. **Save to Cloud**: The app has a feature to save invoices to the cloud using Firebase.
@@ -21,15 +23,9 @@ This project is a cross-platform deep linking Android tablet app developed with 
 - Firebase
 - [Email Composer Plugin](https://github.com/EinfachHans/capacitor-email-composer)
 
-## Learning Resources
 
-- [Getting Started with Ionic React](https://ionicframework.com/react)
-- [Ionic React YouTube Tutorial](https://www.youtube.com/watch?v=xn-qpnT2n3Q)
-- [Ionic React YouTube Playlist](https://www.youtube.com/watch?v=WugT638KS3Q&list=PLYxzS__5yYQlhvyLXSKhv4oAvl06MInSE)
-- [Ionic React Conference App](https://github.com/ionic-team/ionic-react-conference-app)
-- [Ionic React Demo](https://stackblitz.com/edit/ionic-react-demo?file=index.js)
 
-- # Pragati: Real-time Street Parking and Traffic Management System
+# Pragati: Real-time Street Parking and Traffic Management System
 
 ## Overview
 
@@ -60,13 +56,7 @@ With the constantly increasing number of vehicles in India and the lack of adequ
 - **Frontend**: Flutter is used to create an intuitive and responsive user interface.
 - **Database**: Firebase is used to store real-time sensor data and user information. It allows for efficient data retrieval and real-time updates.
 - **Cloud**: AWS provides scalable computing and storage resources, ensuring the system can handle large amounts of data and high traffic loads.
-
-## Setup
-
-1. Clone the repository: `git clone https://github.com/user/Pragati.git`
-2. Navigate to the project directory: `cd Pragati`
-3. Install dependencies: `flutter pub get`
-4. Run the app: `flutter run`
+- **Blockchain**: Blockchain for recording transaction and data, payment processing and NFT/ Token based reward system.
 
 ## Contribution
 
