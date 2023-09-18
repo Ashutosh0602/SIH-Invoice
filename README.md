@@ -4,7 +4,7 @@
 
 This project is a cross-platform deep linking Android tablet app developed with Flutter for the "Govt. Billing and Invoicing system". The project repository can be found [here](https://github.com/seetadev/GovtInvoice).
 
-## Video Demo Link: https://www.kapwing.com/65038503994eb600174483f5/studio/editor/sharing
+## Video Demo Link: https://drive.google.com/file/d/1khL3e3F2kUWqqaDwpmBMNy-5VHgYccws/view?usp=drive_link
 
 ## Features
 
